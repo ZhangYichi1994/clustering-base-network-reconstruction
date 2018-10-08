@@ -31,8 +31,8 @@ classNumber = 2;% clustering class number
 [Stra,Unity] = Game(Adj,b);
 
 %%  clustering G(or A), to explore the group porperty of X
- 
 [res_cell, centroid, bigDegreeSet] = FunK_meanPolyD(Unity,classNumber,Length);%  kæ˘÷µæ€¿‡    
+
 %% Reconstruct the Network Structure Based on the Evolutionary Game Data
 % % compressive sensing l1-norm
 Index=0;

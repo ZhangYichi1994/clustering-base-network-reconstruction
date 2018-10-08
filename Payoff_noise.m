@@ -7,5 +7,4 @@ function score=Payoff_noise(stra_player1,stra_player2,b,thred)
       case 3,score=0;
  end
  score=score+unifrnd(0,thred); % Add some noise in the score
-%  score=score+normrnd(0,thred);
 end

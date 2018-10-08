@@ -18,8 +18,6 @@ function [z, history] = lasso_box(A, b, lambda, rho, alpha)
 % alpha is the over-relaxation parameter (typical values for alpha are 
 % between 1.0 and 1.8).
 %
-%
-%
 
 t_start = tic;
 

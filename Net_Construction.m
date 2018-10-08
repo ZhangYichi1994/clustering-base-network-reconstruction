@@ -34,17 +34,18 @@ function Adj=Net_Construction(Stra,Unity,bigDegreeSet,Index,Length,b)
         end       
     end   
 
-    %%  traditional compressive sensing---l1 norm without latent information
+    %%  traditional compressive sensing---l1 norm 
     if (Index==0)
         for i = 1:SIZE
             payoffTemp = Unity_temp(i,1:Length1);
             payoffTemp = payoffTemp';   % get Y
+			player1 = i;
             for t = 1:Length1 
                 stra_player1=Stra_temp(player1,t);
                 for j=1:SIZE
                     player2=j;
                     stra_player2=Stra_temp(player2,t);
-                    TEMP(t,j)=Payoff(stra_player1,stra_player2,b);
+                    TEMP(t,player2)=Payoff(stra_player1,stra_player2,b);
                 end
             end
             straTemp = TEMP;            % get phi           
@@ -57,17 +58,18 @@ function Adj=Net_Construction(Stra,Unity,bigDegreeSet,Index,Length,b)
             Adj(:,i) = x;
         end
     end    
-   %% traditional compressive sensing with noise
+   %% traditional compressive sensing with noise	-	LASSO
     if (Index==1)
         for i = 1:SIZE
             payoffTemp = Unity_temp(i,1:Length1);
             payoffTemp = payoffTemp';   % get Y
+			player1 = i;
             for t = 1:Length1 
                 stra_player1=Stra_temp(player1,t);
                 for j=1:SIZE
                     player2=j;
                     stra_player2=Stra_temp(player2,t);
-                    TEMP(t,j)=Payoff(stra_player1,stra_player2,b);
+                    TEMP(t,player2)=Payoff(stra_player1,stra_player2,b);
                 end
             end
             straTemp = TEMP;            % get phi           
@@ -77,13 +79,6 @@ function Adj=Net_Construction(Stra,Unity,bigDegreeSet,Index,Length,b)
             cvx_end          
             Adj(:,i) = x;
         end
-%         
-%         
-%         cvx_begin
-%             variable x(SIZE*SIZE);
-%             minimize(0.0001*norm(x,1)+0.5*norm(Unity_use - Stra_use*x,2));
-%         cvx_end    
-%         Adj=reshape(x,SIZE,SIZE);
     end
 %% CBM
     if(Index == 2)   

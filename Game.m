@@ -5,51 +5,51 @@
 % Unity--Data of fitness, Unity(i,j)-the fitness of agent i in step j
 
 function [Stra,Unity] = Game(Adj,b)
-N = size(Adj,1);% N为网络节点数目
+N = size(Adj,1);% N is the number of nodes of network
 
 Stra=[];
-stra=(rand(N,1)>0.5)*1;% 策略初始分布，等概率的选择合作或者非合作的行为
-Unity=[];% 适应度
-for T=1:4*N        %一共进行多少次博弈
+stra=(rand(N,1)>0.5)*1;% initial strategies distribute, cooperation and defection are same
+Unity=[];%payoff
+for T=1:4*N        %Round of game 
     for i=1:N
-        player1=i;%从群体选择一个个体i
-        stra_player1=stra(player1);%得到个体i的策略
+        player1=i;%Selecte one node i
+        stra_player1=stra(player1);%Get i's strategy
         score1=0;
         Neig=[];
         for j=1:N
             if Adj(player1,j)==1
-                Neig=[Neig,j];%记录个体player1的邻居
-                player2=j;%得到个体的邻居及其策略
+                Neig=[Neig,j];%Record the neighbors of player1
+                player2=j;%Get its neighbor's stategy
                 stra_player2=stra(player2);
-                score1=score1+Payoff(stra_player1,stra_player2,b);%得到个体player1的收益  
+                score1=score1+Payoff(stra_player1,stra_player2,b);%Get player1's payoff  
             end            
         end
-        unity(i)=score1;%计算各个个体的收益
+        unity(i)=score1;
     end
-    Unity=[Unity,unity'];%第i列为i时刻所有个体的收益
+    Unity=[Unity,unity'];%i collum is i rount all nodes' payoff
     
     Stra=[Stra,stra];
     for i=1:N        
-        player1=i;%从群体选择一个个体i
-        stra_player1=stra(player1);%得到个体i的策略
+        player1=i;
+        stra_player1=stra(player1);
         Neig=[];
         for j=1:N
             if Adj(player1,j)==1
-                Neig=[Neig,j];%记录个体player1的邻居            
+                Neig=[Neig,j];            
             end            
         end
-        Neig_Size=size(Neig,2);%个体自身的度
+        Neig_Size=size(Neig,2);% Node own degree
         Neig_rand0=randi(Neig_Size);
-        Neig_rand=Neig( Neig_rand0);%随机选择一个邻居         
+        Neig_rand=Neig( Neig_rand0);%Ramdomly select one neighbor         
         player11=Neig_rand;
         Neig1=[];
         for j=1:N
             if Adj(player11,j)==1
-                Neig1=[Neig1,j];%记录个体player11的邻居            
+                Neig1=[Neig1,j];            
             end            
         end   
-        Neig_Size1=size(Neig1,2);%邻居的度
-        stra_neig=stra(Neig_rand);%得到个体的策略
+        Neig_Size1=size(Neig1,2);% Neighbor's degree
+        stra_neig=stra(Neig_rand);
         if stra_neig~=stra_player1
             score1=unity(player1);
             score2=unity(Neig_rand);        
@@ -64,7 +64,7 @@ for T=1:4*N        %一共进行多少次博弈
     end
     
 end
-%% 以上得到了各个时刻，所有个体的策略矩阵Stra；收益矩阵Unity
+%%The above process is obtained at each moment, all individual's strategic matrix Stra, the income matrix Unity
 end
 
 

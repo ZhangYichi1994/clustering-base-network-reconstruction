@@ -34,7 +34,7 @@ classNumber = 2;% clustering class number
 [res_cell, centroid, bigDegreeSet] = FunK_meanPolyD(Unity,classNumber,Length);
 
 %% Reconstruct the Network Structure Based on the Evolutionary Game Data
-%%        % l1约束，不考虑hub节点，有噪声
+%%        %compressive sensing LASSO
 Index=1;
 Adj_Re = Net_Construction(Stra,Unity,bigDegreeSet,Index,Length,b);
 adj=reshape(Adj,SIZE*SIZE,1);

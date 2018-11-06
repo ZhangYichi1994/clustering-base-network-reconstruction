@@ -1,12 +1,13 @@
-function [z, history] = basis_pursuit(A, b, rho, alpha)
-% basis_pursuit  Solve basis pursuit via ADMM
+function [z, history] = basis_pursuit_box(A, b, rho, alpha)
+% basis_pursuit_box  Solve basis pursuit via ADMM
 %
-% [x, history] = basis_pursuit(A, b, rho, alpha)
+% [x, history] = basis_pursuit_box(A, b, rho, alpha)
 % 
 % Solves the following problem via ADMM:
 % 
 %   minimize     ||x||_1
 %   subject to   Ax = b
+%				 x belong to [0,1]
 %
 % The solution is returned in the vector x.
 %

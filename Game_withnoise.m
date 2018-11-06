@@ -1,4 +1,4 @@
-%% Generate the evolutionary game data
+%% Generate the evolutionary game data with noise
 % Input: Adjacent Matrx--Adj
 % Output: Evolutionary game data--Stra and Unity
 % Stra--Data of strategies, Stra(i,j)-the strategy of agent i in step j

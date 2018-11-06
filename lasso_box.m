@@ -1,11 +1,12 @@
 function [z, history] = lasso_box(A, b, lambda, rho, alpha)
 % lasso  Solve lasso problem via ADMM
 %
-% [z, history] = lasso(A, b, lambda, rho, alpha);
+% [z, history] = lasso_box(A, b, lambda, rho, alpha);
 % 
 % Solves the following problem via ADMM:
 %
 %   minimize 1/2*|| Ax - b ||_2^2 + \lambda || x ||_1
+%	subject to: x belong to [0,1]
 %
 % The solution is returned in the vector x.
 %

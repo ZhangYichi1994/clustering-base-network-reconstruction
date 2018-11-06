@@ -16,7 +16,7 @@ for i = 1:size(adjRecon)
     end
 end
 
-% º∆À„Accuarcy
+% Calculate Accuarcy
 acc = 0;
 tp = 0;
 for i = 1:size(adjReal)

@@ -84,11 +84,11 @@ function Adj=Net_Construction(Stra,Unity,bigDegreeSet,Index,Length,b)
     if(Index == 2)   
         [x history1] = basis_pursuit_box(Stra_use,Unity_use,1,1);
         Adj=reshape(x,SIZE,SIZE);
-        for i = 1:size(bigDegreeSet,2)        %找到度大的节点，将其不可靠值对其余值进行替换
+        for i = 1:size(bigDegreeSet,2)        %find the big degree set and replace the unreliable value
             dot = bigDegreeSet(i);
             for j = 1:SIZE             
                 whetherFind = find(bigDegreeSet == j);
-                if (isempty(whetherFind))             % 邻居是一个hub节点
+                if (isempty(whetherFind))             % neighbor is a hub node
                     Adj(dot,j) = Adj(j,dot);
                 end
             end
@@ -98,11 +98,11 @@ function Adj=Net_Construction(Stra,Unity,bigDegreeSet,Index,Length,b)
     if(Index == 3)
         [x history] = lasso_box(Stra_use,Unity_use,0.0001,1,1);
         Adj=reshape(x,SIZE,SIZE);
-        for i = 1:size(bigDegreeSet,2)        %找到度大的节点，将其不可靠值对其余值进行替换
+        for i = 1:size(bigDegreeSet,2)        %find the big degree set and replace the unreliable value
             dot = bigDegreeSet(i);
             for j = 1:SIZE             
                 whetherFind = find(bigDegreeSet == j);
-                if (isempty(whetherFind))             % 邻居是一个hub节点
+                if (isempty(whetherFind))             % neighbor is a hub node
                     Adj(dot,j) = Adj(j,dot);
                 end
             end

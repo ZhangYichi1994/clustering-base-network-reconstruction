@@ -3,7 +3,7 @@
 main.m is the main function file of clear observation data
 mainwwithNoise.m is the man function file of noise polluted observation data.
 
-basic_pursuit_box and lasso_box are CBM in clear environment and noise environment, respectively.
+basic_pursuit_box.m and lasso_box.m are CBM in clear environment and noise environment, respectively.
 
 This is the source code of paper "Heterogeneous networks structure reconstruction via compressive sensing and clustering" please cite
  ```latex

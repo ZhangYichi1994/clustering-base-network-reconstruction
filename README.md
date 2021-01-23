@@ -1,5 +1,7 @@
 # clustering-base-network-reconstruction
 
+CBA method mentioned in Y. Zhang, C. Yang, K. Huang, M. Jusup, Z. Wang and X. Li, "Reconstructing Heterogeneous Networks via Compressive Sensing and Clustering," in IEEE Transactions on Emerging Topics in Computational Intelligence, doi: 10.1109/TETCI.2020.2997011.
+
 main.m is the main function file of clear observation data
 mainwwithNoise.m is the man function file of noise polluted observation data.
 
